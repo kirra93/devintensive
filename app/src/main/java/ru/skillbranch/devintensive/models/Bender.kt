@@ -12,18 +12,18 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
     }
 
     fun listenAnswer(answer: String): Pair<String, Triple<Int, Int, Int>> {
-        val validator = question.validate(answer)
+//        val validator = question.validate(answer)
 
-        return if (validator !== null) {
-            "$validator\n${question.question}" to status.color
-
-        } else if (question.answers.contains(answer.toLowerCase())) {
-            question = question.nextQuestion()
-            "Отлично - ты справился\n${question.question}" to status.color
-
-        } else {
+        return if (!question.answers.contains(answer.toLowerCase())) {
             status = status.nextStatus()
             "${if(status.ordinal != 0) "Это не правильный ответ" else "Это неправильный ответ. Давай все по новой"}\n${question.question}" to status.color
+
+//        } else if (validator !== null) {
+//            "$validator\n${question.question}" to status.color
+
+        } else {
+            question = question.nextQuestion()
+            "Отлично - ты справился\n${question.question}" to status.color
         }
     }
 
