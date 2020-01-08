@@ -61,6 +61,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onResume() {
         super.onResume()
+//        this.hideKeyboard()
         Log.d("M_MainActivity", "onResume")
     }
 
@@ -93,9 +94,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-       this.hideKeyboard()
-
         if (v?.id === R.id.iv_send) {
+            this.hideKeyboard()
             val (phrase, color) = benderObj.listenAnswer(messageEt.text.toString())
             messageEt.setText("")
             val (r, g, b) = color
