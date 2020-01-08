@@ -19,11 +19,11 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
 
         } else if (question.answers.contains(answer.toLowerCase())) {
             question = question.nextQuestion()
-            "Отлично, это правильный ответ!\n${question.question}" to status.color
+            "Отлично - ты справился\n${question.question}" to status.color
 
         } else {
             status = status.nextStatus()
-            "Это не правильный ответ\n${question.question}" to status.color
+            "${if(status.ordinal != 0) "Это не правильный ответ" else "Это неправильный ответ. Давай все по новой"}\n${question.question}" to status.color
         }
     }
 

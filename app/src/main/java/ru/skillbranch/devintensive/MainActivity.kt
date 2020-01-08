@@ -93,8 +93,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     override fun onClick(v: View?) {
-        Log.d("M_MainActivity", "before hideKeyboard isKeyboardOpen: ${this.isKeyboardOpen()}, isKeyboardClosed: ${this.isKeyboardClosed()}")
-        this.hideKeyboard()
+       this.hideKeyboard()
 
         if (v?.id === R.id.iv_send) {
             val (phrase, color) = benderObj.listenAnswer(messageEt.text.toString())
@@ -103,7 +102,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             benderImage.setColorFilter(Color.rgb(r, g, b), PorterDuff.Mode.MULTIPLY)
             textTxt.setText(phrase)
         }
-
-        Log.d("M_MainActivity", "after hideKeyboard isKeyboardOpen: ${this.isKeyboardOpen()}, isKeyboardClosed: ${this.isKeyboardClosed()}")
     }
 }
