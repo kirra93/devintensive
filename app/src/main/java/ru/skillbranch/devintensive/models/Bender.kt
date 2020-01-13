@@ -40,14 +40,6 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
                 return values()[0]
             }
         }
-
-        fun prevStatus(): Status {
-            return if (this.ordinal > 0) {
-                return values()[this.ordinal - 1]
-            } else {
-                return values()[this.ordinal]
-            }
-        }
     }
 
     enum class Question(val question: String, val answers: List<String>) {
