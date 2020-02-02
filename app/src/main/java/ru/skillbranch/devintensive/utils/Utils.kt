@@ -22,8 +22,53 @@ object Utils {
     }
 
     fun transliteration(payload: String, divider: String = " "): String {
-        TODO("In dev")
+        var nickname = ""
+        var isUpper = false
+        for (ch in payload) {
+            isUpper = ch.isUpperCase()
+            nickname += if (!isUpper) transliteLetter(ch.toUpperCase()).toLowerCase() else transliteLetter(ch.toUpperCase())
+        }
+        return nickname
     }
+
+    private fun transliteLetter(letter: Char): String = when (letter) {
+            'А' -> "A"
+            'Б' -> "B"
+            'В' -> "V"
+            'Г' -> "G"
+            'Д' -> "D"
+            'Е' -> "E"
+            'Ё' -> "JE"
+            'Ж' -> "ZH"
+            'З' -> "Z"
+            'И' -> "I"
+            'Й' -> "Y"
+            'К' -> "K"
+            'Л' -> "L"
+            'М' -> "M"
+            'Н' -> "N"
+            'О' -> "O"
+            'П' -> "P"
+            'Р' -> "R"
+            'С' -> "S"
+            'Т' -> "T"
+            'У' -> "U"
+            'Ф' -> "F"
+            'Х' -> "KH"
+            'Ц' -> "C"
+            'Ч' -> "CH"
+            'Ш' -> "SH"
+            'Щ' -> "JSH"
+            'Ъ' -> "HH"
+            'Ы' -> "IH"
+            'Ь' -> "JH"
+            'Э' -> "EH"
+            'Ю' -> "JU"
+            'Я' -> "JA"
+            ' ' -> "_"
+            else -> ""
+        }
+
 
     fun toInitials(firstName: String?, lastName: String?): String? {
         var first = firstName?.trim()
